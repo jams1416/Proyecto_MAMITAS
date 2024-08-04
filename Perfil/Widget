@@ -1,0 +1,490 @@
+// Importaciones necesarias para el funcionamiento del widget y las funcionalidades usadas.
+import '/auth/firebase_auth/auth_util.dart'; // Utilidades para la autenticación con Firebase.
+import '/flutter_flow/flutter_flow_expanded_image_view.dart'; // Vista expandida de imágenes de FlutterFlow.
+import '/flutter_flow/flutter_flow_theme.dart'; // Tema de FlutterFlow.
+import '/flutter_flow/flutter_flow_util.dart'; // Utilidades de FlutterFlow.
+import '/flutter_flow/flutter_flow_widgets.dart'; // Widgets personalizados de FlutterFlow.
+import 'package:flutter/material.dart'; // Librería principal de Flutter para Material Design.
+import 'package:google_fonts/google_fonts.dart'; // Librería para usar fuentes de Google.
+import 'package:page_transition/page_transition.dart'; // Librería para transiciones de página.
+import 'package:provider/provider.dart'; // Librería para la gestión de estado.
+
+import 'perfil_model.dart'; // Importa el modelo del perfil.
+export 'perfil_model.dart'; // Exporta el modelo del perfil para ser usado en otras partes de la aplicación.
+
+class PerfilWidget extends StatefulWidget {
+  const PerfilWidget({super.key}); // Constructor de la clase.
+
+  @override
+  State<PerfilWidget> createState() => _PerfilWidgetState(); // Crea el estado asociado al widget.
+}
+
+class _PerfilWidgetState extends State<PerfilWidget> {
+  late PerfilModel _model; // Declaración tardía del modelo.
+
+  final scaffoldKey = GlobalKey<ScaffoldState>(); // Clave global para el Scaffold.
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => PerfilModel()); // Inicializa el modelo.
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {})); // Asegura que el estado se actualice al iniciar.
+  }
+
+  @override
+  void dispose() {
+    _model.dispose(); // Limpia los recursos utilizados por el modelo.
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey, // Asigna la clave global al Scaffold.
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground, // Color de fondo del Scaffold.
+      appBar: AppBar(
+        backgroundColor: Color(0xCF56ABEC), // Color de fondo del AppBar.
+        automaticallyImplyLeading: false, // No añade un botón de retroceso automáticamente.
+        leading: InkWell(
+          splashColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onTap: () async {
+            context.pushNamed('PaginaPrincipal'); // Navega a la página principal al tocar.
+          },
+          child: Icon(
+            Icons.arrow_back, // Icono de retroceso.
+            color: Colors.black, // Color del icono.
+            size: 24, // Tamaño del icono.
+          ),
+        ),
+        title: Text(
+          FFLocalizations.of(context).getText('o7a1wvn9' /* Perfil */), // Título del AppBar.
+          style: FlutterFlowTheme.of(context).displaySmall.override(
+                fontFamily: 'Outfit',
+                letterSpacing: 0,
+              ),
+        ),
+        actions: [], // No hay acciones adicionales en el AppBar.
+        centerTitle: false, // El título no está centrado.
+        elevation: 0, // Sin sombra debajo del AppBar.
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: MediaQuery.sizeOf(context).width, // Ancho del contenedor igual al ancho de la pantalla.
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground, // Color de fondo del contenedor.
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 1, // Radio de desenfoque de la sombra.
+                      color: FlutterFlowTheme.of(context).primaryBackground, // Color de la sombra.
+                      offset: Offset(0.0, 0), // Desplazamiento de la sombra.
+                    )
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12), // Espaciado interno.
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Container(
+                        width: 70,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).alternate, // Color de fondo del contenedor.
+                          borderRadius: BorderRadius.circular(12), // Radio de los bordes.
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(2), // Espaciado interno.
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10), // Radio de los bordes.
+                            child: Image.asset(
+                              'assets/images/perfil.jpg', // Imagen del perfil.
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover, // Ajuste de la imagen.
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0), // Espaciado interno.
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start, // Alineación al inicio.
+                          children: [
+                            AuthUserStreamWidget(
+                              builder: (context) => Text(
+                                currentUserDisplayName, // Nombre de usuario actual.
+                                style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                      fontFamily: 'Outfit',
+                                      letterSpacing: 0,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0), // Espaciado interno.
+                              child: Text(
+                                currentUserEmail, // Email del usuario actual.
+                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                      fontFamily: 'Outfit',
+                                      color: FlutterFlowTheme.of(context).primary,
+                                      fontSize: 14,
+                                      letterSpacing: 0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0), // Espaciado interno.
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                if (Theme.of(context).brightness == Brightness.light)
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      setDarkModeSetting(context, ThemeMode.dark); // Cambia a modo oscuro.
+                    },
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width, // Ancho del contenedor igual al ancho de la pantalla.
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground, // Color de fondo del contenedor.
+                      ),
+                    ),
+                  ),
+                if (Theme.of(context).brightness == Brightness.dark)
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      setDarkModeSetting(context, ThemeMode.light); // Cambia a modo claro.
+                    },
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width, // Ancho del contenedor igual al ancho de la pantalla.
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground, // Color de fondo del contenedor.
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 12), // Espaciado interno.
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribución equitativa del espacio entre elementos.
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText('z0g0jzao' /* Switch to Light Mode */), // Texto de cambio de modo.
+                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            Container(
+                              width: 80,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context).primaryBackground, // Color de fondo del contenedor.
+                                borderRadius: BorderRadius.circular(20), // Radio de los bordes.
+                              ),
+                              child: Stack(
+                                alignment: AlignmentDirectional(0, 0), // Alineación del contenido.
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-0.9, 0), // Alineación del icono.
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(8, 2, 0, 0), // Espaciado interno.
+                                      child: Icon(
+                                        Icons.wb_sunny_rounded, // Icono de sol.
+                                        color: FlutterFlowTheme.of(context).secondaryText,
+                                        size: 24,
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.9, 0), // Alineación del icono.
+                                    child: Container(
+                                      width: 36,
+                                      height: 36,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4,
+                                            color: Color(0x430B0D0F), // Color de la sombra.
+                                            offset: Offset(0.0, 2), // Desplazamiento de la sombra.
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(30), // Radio de los bordes.
+                                        shape: BoxShape.rectangle,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12), // Espaciado interno.
+                    child: Text(
+                      FFLocalizations.of(context).getText('6q5aitwn' /* Account Settings */), // Texto de configuración de cuenta.
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0), // Espaciado interno.
+                child: Container(
+                  width: double.infinity,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 5,
+                        color: Color(0x3416202A),
+                        offset: Offset(0.0, 2), // Desplazamiento de la sombra.
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12), // Radio de los bordes.
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8), // Espaciado interno.
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        if (currentUserEmail.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Email required!'), // Mensaje de error si el email está vacío.
+                            ),
+                          );
+                          return;
+                        }
+                        await authManager.resetPassword(
+                          email: currentUserEmail,
+                          context: context, // Reinicia la contraseña del usuario.
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0), // Espaciado interno.
+                            child: Text(
+                              FFLocalizations.of(context).getText('lwjz552c' /* Change Password */), // Texto para cambiar la contraseña.
+                              style: FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional(0.9, 0), // Alineación del icono.
+                              child: Icon(
+                                Icons.arrow_forward_ios, // Icono de flecha hacia adelante.
+                                color: FlutterFlowTheme.of(context).secondaryText,
+                                size: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0), // Espaciado interno.
+                child: Container(
+                  width: double.infinity,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 5,
+                        color: Color(0x3416202A),
+                        offset: Offset(0.0, 2), // Desplazamiento de la sombra.
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(12), // Radio de los bordes.
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8), // Espaciado interno.
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('EditarPerfil'); // Navega a la página de edición de perfil.
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0), // Espaciado interno.
+                            child: Text(
+                              FFLocalizations.of(context).getText('dp2fpw6r' /* Edit Profile */), // Texto para editar el perfil.
+                              style: FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Align(
+                              alignment: AlignmentDirectional(0.9, 0), // Alineación del icono.
+                              child: Icon(
+                                Icons.arrow_forward_ios, // Icono de flecha hacia adelante.
+                                color: FlutterFlowTheme.of(context).secondaryText,
+                                size: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20), // Espaciado interno.
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center, // Alineación centrada.
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0), // Espaciado interno.
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent(); // Prepara el evento de autenticación.
+                          await authManager.signOut(); // Cierra la sesión del usuario.
+                          GoRouter.of(context).clearRedirectLocation(); // Limpia la ubicación de redireccionamiento.
+
+                          context.goNamedAuth('CheckIn', context.mounted); // Navega a la página de CheckIn.
+                        },
+                        text: FFLocalizations.of(context).getText('aziagrzc' /* Login */), // Texto del botón de inicio de sesión.
+                        options: FFButtonOptions(
+                          width: 90,
+                          height: 40,
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 2, 0, 0), // Espaciado interno.
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0), // Espaciado del icono.
+                          color: FlutterFlowTheme.of(context).secondaryBackground, // Color de fondo del botón.
+                          textStyle: FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Lexend Deca',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 20,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.normal,
+                              ),
+                          elevation: 1,
+                          borderSide: BorderSide(
+                            color: Colors.transparent, // Sin borde.
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Opacity(
+            opacity: 0.5, // Opacidad de la imagen.
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 60, 0, 0), // Espaciado interno.
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.fade, // Tipo de transición.
+                      child: FlutterFlowExpandedImageView(
+                        image: Image.asset(
+                          'assets/images/Captura.JPG', // Imagen a mostrar en vista expandida.
+                          fit: BoxFit.contain,
+                        ),
+                        allowRotation: false, // No permite rotación.
+                        tag: 'imageTag2',
+                        useHeroAnimation: true, // Usa animación Hero.
+                      ),
+                    ),
+                  );
+                },
+                child: Hero(
+                  tag: 'imageTag2',
+                  transitionOnUserGestures: true, // Transición en gestos del usuario.
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8), // Radio de los bordes.
+                    child: Image.asset(
+                      'assets/images/Captura.JPG', // Imagen a mostrar.
+                      width: 585,
+                      height: 534,
+                      fit: BoxFit.fill, // Ajuste de la imagen.
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

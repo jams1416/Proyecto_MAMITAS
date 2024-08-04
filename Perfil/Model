@@ -1,0 +1,22 @@
+// Importaciones necesarias para el funcionamiento del modelo y las funcionalidades usadas.
+import '/auth/firebase_auth/auth_util.dart'; // Utilidades para la autenticación con Firebase.
+import '/flutter_flow/flutter_flow_expanded_image_view.dart'; // Vista expandida de imágenes de FlutterFlow.
+import '/flutter_flow/flutter_flow_theme.dart'; // Tema de FlutterFlow.
+import '/flutter_flow/flutter_flow_util.dart'; // Utilidades de FlutterFlow.
+import '/flutter_flow/flutter_flow_widgets.dart'; // Widgets personalizados de FlutterFlow.
+import 'perfil_widget.dart' show PerfilWidget; // Importa el widget PerfilWidget, mostrando solo lo que es necesario.
+import 'package:flutter/material.dart'; // Librería principal de Flutter para Material Design.
+import 'package:google_fonts/google_fonts.dart'; // Librería para usar fuentes de Google.
+import 'package:page_transition/page_transition.dart'; // Librería para transiciones de página.
+import 'package:provider/provider.dart'; // Librería para la gestión de estado.
+
+// Define el modelo PerfilModel que extiende de FlutterFlowModel.
+class PerfilModel extends FlutterFlowModel<PerfilWidget> {
+  // Método que se ejecuta al inicializar el estado.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método que se ejecuta al desechar el estado.
+  @override
+  void dispose() {}
+}

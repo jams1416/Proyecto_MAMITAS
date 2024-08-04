@@ -1,0 +1,49 @@
+// Importaciones necesarias para el funcionamiento del modelo y las funcionalidades usadas.
+import '/auth/firebase_auth/auth_util.dart'; // Utilidades para la autenticación con Firebase.
+import '/flutter_flow/flutter_flow_theme.dart'; // Tema de FlutterFlow.
+import '/flutter_flow/flutter_flow_util.dart'; // Utilidades de FlutterFlow.
+import '/flutter_flow/flutter_flow_widgets.dart'; // Widgets personalizados de FlutterFlow.
+import 'login_widget.dart' show LoginWidget; // Importa el widget LoginWidget, mostrando solo lo que es necesario.
+import 'package:cached_network_image/cached_network_image.dart'; // Librería para cargar imágenes en caché desde la red.
+import 'package:flutter/material.dart'; // Librería principal de Flutter para Material Design.
+import 'package:flutter/scheduler.dart'; // Utilidades para la programación de tareas asíncronas.
+import 'package:google_fonts/google_fonts.dart'; // Librería para usar fuentes de Google.
+import 'package:provider/provider.dart'; // Librería para la gestión de estado.
+
+// Define el modelo LoginModel que extiende de FlutterFlowModel.
+class LoginModel extends FlutterFlowModel<LoginWidget> {
+  /// Campos de estado local para esta página.
+  bool? create = false; // Campo de estado local para determinar si es una creación.
+
+  /// Campos de estado para widgets con estado en esta página.
+  final unfocusNode = FocusNode(); // Nodo de enfoque general para desactivar el enfoque de otros campos.
+  
+  // Campos de estado para el widget de email.
+  FocusNode? emailFocusNode; // Nodo de enfoque para el campo de texto del email.
+  TextEditingController? emailTextController; // Controlador del campo de texto del email.
+  String? Function(BuildContext, String?)? emailTextControllerValidator; // Validador del campo de texto del email.
+
+  // Campos de estado para el widget de contraseña.
+  FocusNode? passwordFocusNode; // Nodo de enfoque para el campo de texto de la contraseña.
+  TextEditingController? passwordTextController; // Controlador del campo de texto de la contraseña.
+  late bool passwordVisibility; // Visibilidad del texto de la contraseña.
+  String? Function(BuildContext, String?)? passwordTextControllerValidator; // Validador del campo de texto de la contraseña.
+
+  // Método que se ejecuta al inicializar el estado.
+  @override
+  void initState(BuildContext context) {
+    passwordVisibility = false; // Inicializa la visibilidad de la contraseña como no visible.
+  }
+
+  // Método que se ejecuta al desechar el estado.
+  @override
+  void dispose() {
+    // Limpia los recursos utilizados por los nodos de enfoque y los controladores de texto.
+    unfocusNode.dispose(); // Limpia el nodo de enfoque general.
+    emailFocusNode?.dispose(); // Limpia el nodo de enfoque del email.
+    emailTextController?.dispose(); // Limpia el controlador de texto del email.
+
+    passwordFocusNode?.dispose(); // Limpia el nodo de enfoque de la contraseña.
+    passwordTextController?.dispose(); // Limpia el controlador de texto de la contraseña.
+  }
+}

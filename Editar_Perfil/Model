@@ -1,0 +1,43 @@
+// Importaciones necesarias para el funcionamiento del modelo y las funcionalidades usadas.
+import '/auth/firebase_auth/auth_util.dart'; // Utilidades para la autenticación con Firebase.
+import '/backend/backend.dart'; // Conexión con el backend.
+import '/flutter_flow/flutter_flow_expanded_image_view.dart'; // Vista expandida de imágenes de FlutterFlow.
+import '/flutter_flow/flutter_flow_theme.dart'; // Tema de FlutterFlow.
+import '/flutter_flow/flutter_flow_util.dart'; // Utilidades de FlutterFlow.
+import '/flutter_flow/flutter_flow_widgets.dart'; // Widgets personalizados de FlutterFlow.
+import 'editar_perfil_widget.dart' show EditarPerfilWidget; // Importa el widget EditarPerfilWidget, mostrando solo lo que es necesario.
+import 'package:cloud_firestore/cloud_firestore.dart'; // Librería para Firestore.
+import 'package:flutter/material.dart'; // Librería principal de Flutter para Material Design.
+import 'package:google_fonts/google_fonts.dart'; // Librería para usar fuentes de Google.
+import 'package:page_transition/page_transition.dart'; // Librería para transiciones de página.
+import 'package:provider/provider.dart'; // Librería para la gestión de estado.
+
+// Define el modelo EditarPerfilModel que extiende de FlutterFlowModel.
+class EditarPerfilModel extends FlutterFlowModel<EditarPerfilWidget> {
+  /// Campos de estado para widgets con estado en esta página.
+
+  // Campos de estado para el widget TextFieldName.
+  FocusNode? textFieldNameFocusNode; // Nodo de enfoque para el campo de texto del nombre.
+  TextEditingController? textFieldNameTextController; // Controlador del campo de texto del nombre.
+  String? Function(BuildContext, String?)? textFieldNameTextControllerValidator; // Validador del campo de texto del nombre.
+
+  // Campos de estado para el widget TextFieldEmail.
+  FocusNode? textFieldEmailFocusNode; // Nodo de enfoque para el campo de texto del email.
+  TextEditingController? textFieldEmailTextController; // Controlador del campo de texto del email.
+  String? Function(BuildContext, String?)? textFieldEmailTextControllerValidator; // Validador del campo de texto del email.
+
+  // Método que se ejecuta al inicializar el estado.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método que se ejecuta al desechar el estado.
+  @override
+  void dispose() {
+    // Limpia los recursos utilizados por los nodos de enfoque y los controladores de texto.
+    textFieldNameFocusNode?.dispose(); // Limpia el nodo de enfoque del nombre.
+    textFieldNameTextController?.dispose(); // Limpia el controlador de texto del nombre.
+
+    textFieldEmailFocusNode?.dispose(); // Limpia el nodo de enfoque del email.
+    textFieldEmailTextController?.dispose(); // Limpia el controlador de texto del email.
+  }
+}
