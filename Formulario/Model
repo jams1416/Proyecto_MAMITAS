@@ -1,0 +1,344 @@
+// Importaciones necesarias para la autenticación de Firebase, widgets personalizados de FlutterFlow,
+// temas, utilidades, widgets y controladores de campos de formulario.
+import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
+import 'formulario_widget.dart' show FormularioWidget;
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+// Definición de la clase `FormularioModel`, que extiende `FlutterFlowModel` y está asociada al widget `FormularioWidget`.
+class FormularioModel extends FlutterFlowModel<FormularioWidget> {
+  /// Campos de estado para widgets con estado en esta página.
+
+  // Nodo de enfoque general utilizado para deseleccionar todos los campos (unfocus).
+  final unfocusNode = FocusNode();
+
+  // Nodo de enfoque y controlador de texto para el campo de "Número".
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  // Función opcional para validar el texto ingresado en el campo de "Número".
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo de "Edad".
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  // Función opcional para validar el texto ingresado en el campo de "Edad".
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo de "Talla".
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  // Función opcional para validar el texto ingresado en el campo de "Talla".
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo de "Peso".
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  // Función opcional para validar el texto ingresado en el campo de "Peso".
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo de "IMC" (Índice de Masa Corporal).
+  FocusNode? imcFocusNode;
+  TextEditingController? imcTextController;
+  // Función opcional para validar el texto ingresado en el campo de "IMC".
+  String? Function(BuildContext, String?)? imcTextControllerValidator;
+
+  // Campo de estado y controlador para el valor seleccionado en el menú desplegable de "Lugar de Residencia".
+  String? lugardeResidenciaValue1;
+  FormFieldController<String>? lugardeResidenciaValueController1;
+
+  // Campo de estado y controlador para el valor seleccionado en el menú desplegable de "Estado Civil".
+  String? lugardeResidenciaValue2;
+  FormFieldController<String>? lugardeResidenciaValueController2;
+
+  // Campo de estado y controlador para el valor seleccionado en el menú desplegable de "Nivel Educativo".
+  String? lugardeResidenciaValue3;
+  FormFieldController<String>? lugardeResidenciaValueController3;
+
+  // Método que se llama cuando se inicializa el estado del modelo.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método que se llama cuando el modelo se va a eliminar de la memoria.
+  @override
+  void dispose() {
+    // Liberar los recursos asociados a los nodos de enfoque y controladores de texto para evitar fugas de memoria.
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode?.dispose();
+    imcTextController?.dispose();
+  }
+}
+// Clase modelo para el formulario 2, que extiende FlutterFlowModel asociado con Formulario2Widget.
+class Formulario2Model extends FlutterFlowModel<Formulario2Widget> {
+  /// Campos de estado para widgets con estado en esta página.
+
+  // Nodo de enfoque general utilizado para deseleccionar todos los campos (unfocus).
+  final unfocusNode = FocusNode();
+
+  // Campo de estado y controlador para el valor seleccionado en el menú desplegable de "Clasificación ASA".
+  String? clasificacionASAValue;
+  FormFieldController<String>? clasificacionASAValueController;
+
+  // Campo de estado y controlador para el valor seleccionado en el menú desplegable de "Curso Psicoprofiláctico".
+  String? cursoPsicoprofilacticoValue;
+  FormFieldController<String>? cursoPsicoprofilacticoValueController;
+
+  // Campos de estado y controladores para valores seleccionados en varios menús desplegables de "Control Prenatal".
+  String? controlPrenatalValue1;
+  FormFieldController<String>? controlPrenatalValueController1;
+
+  String? controlPrenatalValue2;
+  FormFieldController<String>? controlPrenatalValueController2;
+
+  String? controlPrenatalValue3;
+  FormFieldController<String>? controlPrenatalValueController3;
+
+  String? controlPrenatalValue4;
+  FormFieldController<String>? controlPrenatalValueController4;
+
+  String? controlPrenatalValue5;
+  FormFieldController<String>? controlPrenatalValueController5;
+
+  // Nodo de enfoque y controlador de texto para el campo "Gestacional".
+  FocusNode? gestacionalFocusNode;
+  TextEditingController? gestacionalTextController;
+  // Función opcional para validar el texto ingresado en el campo "Gestacional".
+  String? Function(BuildContext, String?)? gestacionalTextControllerValidator;
+
+  // Método que se llama al inicializar el estado del modelo.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método que se llama cuando el modelo se va a eliminar de la memoria.
+  @override
+  void dispose() {
+    // Liberar los recursos asociados a los nodos de enfoque y controladores de texto para evitar fugas de memoria.
+    gestacionalFocusNode?.dispose();
+    gestacionalTextController?.dispose();
+  }
+}
+// Clase modelo para el formulario 3, que extiende FlutterFlowModel asociado con Formulario3Widget.
+class Formulario3Model extends FlutterFlowModel<Formulario3Widget> {
+  /// Campos de estado para widgets con estado en esta página.
+
+  // Nodo de enfoque general utilizado para deseleccionar todos los campos (unfocus).
+  final unfocusNode = FocusNode();
+
+  // Nodo de enfoque y controlador de texto para el campo "Neuroaxial".
+  FocusNode? neuroaxialFocusNode;
+  TextEditingController? neuroaxialTextController;
+  // Función opcional para validar el texto ingresado en el campo "Neuroaxial".
+  String? Function(BuildContext, String?)? neuroaxialTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Temperatura Ambiente".
+  FocusNode? temperaturaAmbienteFocusNode;
+  TextEditingController? temperaturaAmbienteTextController;
+  // Función opcional para validar el texto ingresado en el campo "Temperatura Ambiente".
+  String? Function(BuildContext, String?)? temperaturaAmbienteTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Central".
+  FocusNode? centralFocusNode;
+  TextEditingController? centralTextController;
+  // Función opcional para validar el texto ingresado en el campo "Central".
+  String? Function(BuildContext, String?)? centralTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Cutánea".
+  FocusNode? cutaneaFocusNode;
+  TextEditingController? cutaneaTextController;
+  // Función opcional para validar el texto ingresado en el campo "Cutánea".
+  String? Function(BuildContext, String?)? cutaneaTextControllerValidator;
+
+  // Campos de estado y controladores para valores seleccionados en varios menús desplegables de "Control Prenatal".
+  String? controlPrenatalValue1;
+  FormFieldController<String>? controlPrenatalValueController1;
+
+  String? controlPrenatalValue2;
+  FormFieldController<String>? controlPrenatalValueController2;
+
+  String? controlPrenatalValue3;
+  FormFieldController<String>? controlPrenatalValueController3;
+
+  String? controlPrenatalValue4;
+  FormFieldController<String>? controlPrenatalValueController4;
+
+  // Método que se llama al inicializar el estado del modelo.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método que se llama cuando el modelo se va a eliminar de la memoria.
+  @override
+  void dispose() {
+    // Liberar los recursos asociados a los nodos de enfoque y controladores de texto para evitar fugas de memoria.
+    neuroaxialFocusNode?.dispose();
+    neuroaxialTextController?.dispose();
+
+    temperaturaAmbienteFocusNode?.dispose();
+    temperaturaAmbienteTextController?.dispose();
+
+    centralFocusNode?.dispose();
+    centralTextController?.dispose();
+
+    cutaneaFocusNode?.dispose();
+    cutaneaTextController?.dispose();
+  }
+}
+// Clase modelo para el formulario 4, que extiende FlutterFlowModel asociado con Formulario4Widget.
+class Formulario4Model extends FlutterFlowModel<Formulario4Widget> {
+  /// Campos de estado para widgets con estado en esta página.
+
+  // Nodo de enfoque general utilizado para deseleccionar todos los campos (unfocus).
+  final unfocusNode = FocusNode();
+
+  // Nodo de enfoque y controlador de texto para el campo "Tensión".
+  FocusNode? tensionFocusNode;
+  TextEditingController? tensionTextController;
+  // Función opcional para validar el texto ingresado en el campo "Tensión".
+  String? Function(BuildContext, String?)? tensionTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Frecuencia Materna".
+  FocusNode? frecuenciaMaternaFocusNode;
+  TextEditingController? frecuenciaMaternaTextController;
+  // Función opcional para validar el texto ingresado en el campo "Frecuencia Materna".
+  String? Function(BuildContext, String?)? frecuenciaMaternaTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Frecuencia Fetal".
+  FocusNode? frecuenciaFetalFocusNode;
+  TextEditingController? frecuenciaFetalTextController;
+  // Función opcional para validar el texto ingresado en el campo "Frecuencia Fetal".
+  String? Function(BuildContext, String?)? frecuenciaFetalTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Frecuencia Respiratoria".
+  FocusNode? frecuenciaRespiratoriaFocusNode;
+  TextEditingController? frecuenciaRespiratoriaTextController;
+  // Función opcional para validar el texto ingresado en el campo "Frecuencia Respiratoria".
+  String? Function(BuildContext, String?)? frecuenciaRespiratoriaTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Frecuencia Neonatal".
+  FocusNode? frecuenciaNeonatalFocusNode;
+  TextEditingController? frecuenciaNeonatalTextController;
+  // Función opcional para validar el texto ingresado en el campo "Frecuencia Neonatal".
+  String? Function(BuildContext, String?)? frecuenciaNeonatalTextControllerValidator;
+
+  // Campo de estado y controlador para el valor seleccionado en el menú desplegable de "Control Prenatal".
+  String? controlPrenatalValue;
+  FormFieldController<String>? controlPrenatalValueController;
+
+  // Nodo de enfoque y controlador de texto para el campo "Sensibilidad".
+  FocusNode? sensibilidadFocusNode;
+  TextEditingController? sensibilidadTextController;
+  // Función opcional para validar el texto ingresado en el campo "Sensibilidad".
+  String? Function(BuildContext, String?)? sensibilidadTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Especificidad".
+  FocusNode? especificidadFocusNode;
+  TextEditingController? especificidadTextController;
+  // Función opcional para validar el texto ingresado en el campo "Especificidad".
+  String? Function(BuildContext, String?)? especificidadTextControllerValidator;
+
+  // Método que se llama al inicializar el estado del modelo.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método que se llama cuando el modelo se va a eliminar de la memoria.
+  @override
+  void dispose() {
+    // Liberar los recursos asociados a los nodos de enfoque y controladores de texto para evitar fugas de memoria.
+    tensionFocusNode?.dispose();
+    tensionTextController?.dispose();
+
+    frecuenciaMaternaFocusNode?.dispose();
+    frecuenciaMaternaTextController?.dispose();
+
+    frecuenciaFetalFocusNode?.dispose();
+    frecuenciaFetalTextController?.dispose();
+
+    frecuenciaRespiratoriaFocusNode?.dispose();
+    frecuenciaRespiratoriaTextController?.dispose();
+
+    frecuenciaNeonatalFocusNode?.dispose();
+    frecuenciaNeonatalTextController?.dispose();
+
+    sensibilidadFocusNode?.dispose();
+    sensibilidadTextController?.dispose();
+
+    especificidadFocusNode?.dispose();
+    especificidadTextController?.dispose();
+  }
+}
+// Clase modelo para el formulario 5, que extiende FlutterFlowModel asociado con Formulario5Widget.
+class Formulario5Model extends FlutterFlowModel<Formulario5Widget> {
+  /// Campos de estado para widgets con estado en esta página.
+
+  // Nodo de enfoque general utilizado para deseleccionar todos los campos (unfocus).
+  final unfocusNode = FocusNode();
+
+  // Nodo de enfoque y controlador de texto para el campo "Valor Positivo".
+  FocusNode? valorPositivoFocusNode;
+  TextEditingController? valorPositivoTextController;
+  // Función opcional para validar el texto ingresado en el campo "Valor Positivo".
+  String? Function(BuildContext, String?)? valorPositivoTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Valor Negativo".
+  FocusNode? valornegativoFocusNode;
+  TextEditingController? valornegativoTextController;
+  // Función opcional para validar el texto ingresado en el campo "Valor Negativo".
+  String? Function(BuildContext, String?)? valornegativoTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Razón Positiva".
+  FocusNode? razonPositivaFocusNode;
+  TextEditingController? razonPositivaTextController;
+  // Función opcional para validar el texto ingresado en el campo "Razón Positiva".
+  String? Function(BuildContext, String?)? razonPositivaTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "Razón Negativa".
+  FocusNode? razonNegativaFocusNode;
+  TextEditingController? razonNegativaTextController;
+  // Función opcional para validar el texto ingresado en el campo "Razón Negativa".
+  String? Function(BuildContext, String?)? razonNegativaTextControllerValidator;
+
+  // Nodo de enfoque y controlador de texto para el campo "ROC".
+  FocusNode? rocFocusNode;
+  TextEditingController? rocTextController;
+  // Función opcional para validar el texto ingresado en el campo "ROC".
+  String? Function(BuildContext, String?)? rocTextControllerValidator;
+
+  // Método que se llama al inicializar el estado del modelo.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método que se llama cuando el modelo se va a eliminar de la memoria.
+  @override
+  void dispose() {
+    // Liberar los recursos asociados a los nodos de enfoque y controladores de texto para evitar fugas de memoria.
+    valorPositivoFocusNode?.dispose();
+    valorPositivoTextController?.dispose();
+
+    valornegativoFocusNode?.dispose();
+    valornegativoTextController?.dispose();
+
+    razonPositivaFocusNode?.dispose();
+    razonPositivaTextController?.dispose();
+
+    razonNegativaFocusNode?.dispose();
+    razonNegativaTextController?.dispose();
+
+    rocFocusNode?.dispose();
+    rocTextController?.dispose();
+  }
+}

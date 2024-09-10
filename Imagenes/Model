@@ -1,0 +1,46 @@
+import '/auth/firebase_auth/auth_util.dart'; // Importa utilidades para la autenticación con Firebase.
+import '/flutter_flow/flutter_flow_expanded_image_view.dart'; // Importa la vista expandida de imágenes personalizada de FlutterFlow.
+import '/flutter_flow/flutter_flow_theme.dart'; // Importa el tema personalizado de FlutterFlow.
+import '/flutter_flow/flutter_flow_util.dart'; // Importa utilidades generales de FlutterFlow.
+import '/flutter_flow/flutter_flow_widgets.dart'; // Importa los widgets personalizados de FlutterFlow.
+import '/flutter_flow/upload_data.dart'; // Importa utilidades para la carga de datos (como archivos e imágenes).
+import 'imagenes_widget.dart' show ImagenesWidget; // Importa y muestra el widget de imágenes.
+import 'package:flutter/material.dart'; // Importa el paquete de material design de Flutter.
+import 'package:google_fonts/google_fonts.dart'; // Importa la biblioteca para utilizar fuentes de Google.
+import 'package:page_transition/page_transition.dart'; // Importa las transiciones de página personalizadas.
+import 'package:provider/provider.dart'; // Importa la biblioteca de Provider para la gestión del estado.
+import 'package:simple_gradient_text/simple_gradient_text.dart'; // Importa un paquete para crear textos con gradiente.
+
+/// Define la clase `ImagenesModel` que extiende de `FlutterFlowModel` con el tipo genérico `ImagenesWidget`.
+class ImagenesModel extends FlutterFlowModel<ImagenesWidget> {
+  /// Campos de estado para widgets con estado en esta página.
+  
+  // Nodo de enfoque que se utiliza para quitar el enfoque de los campos de entrada o cerrar el teclado virtual.
+  final unfocusNode = FocusNode();
+  
+  // Booleano que indica si los datos del archivo 1 están siendo subidos.
+  bool isDataUploading1 = false;
+  
+  // Objeto que almacena el archivo subido localmente para el primer archivo. Se inicializa con una lista de bytes vacía.
+  FFUploadedFile uploadedLocalFile1 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  // Booleano que indica si los datos del archivo 2 están siendo subidos.
+  bool isDataUploading2 = false;
+  
+  // Objeto que almacena el archivo subido localmente para el segundo archivo. Se inicializa con una lista de bytes vacía.
+  FFUploadedFile uploadedLocalFile2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  /// Métodos que definen el ciclo de vida del modelo.
+
+  // Método `initState` que se llama cuando se inicializa el estado del modelo. 
+  // Aquí no se realiza ninguna acción al inicializar.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método `dispose` que se llama cuando el modelo se desecha. 
+  // Aquí no se realiza ninguna acción al desechar el modelo.
+  @override
+  void dispose() {}
+}

@@ -1,0 +1,2022 @@
+// Importaciones necesarias para el manejo de autenticación Firebase, temas de Flutter Flow y utilidades.
+import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'basede_datos_widget.dart' show BasedeDatosWidget;
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+// Clase BasedeDatosModel que extiende FlutterFlowModel y está asociada a BasedeDatosWidget.
+class BasedeDatosModel extends FlutterFlowModel<BasedeDatosWidget> {
+  // Método initState se llama cuando se crea la instancia del widget. Aquí podría inicializarse cualquier lógica o variable necesaria.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método dispose se llama cuando el widget es eliminado de la memoria. Aquí se deben liberar los recursos.
+  @override
+  void dispose() {}
+}
+
+// Clase BasedeDatos2Model para manejar el ciclo de vida de BasedeDatos2Widget.
+class BasedeDatos2Model extends FlutterFlowModel<BasedeDatos2Widget> {
+  // Similar al método initState de BasedeDatosModel, permite inicializar recursos específicos para BasedeDatos2Widget.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método dispose libera los recursos cuando el widget es destruido, similar a BasedeDatosModel.
+  @override
+  void dispose() {}
+}
+
+// Clase BasedeDatos3Model para BasedeDatos3Widget.
+// El patrón se mantiene para cada widget donde se maneja su ciclo de vida con los métodos initState y dispose.
+class BasedeDatos3Model extends FlutterFlowModel<BasedeDatos3Widget> {
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {}
+}
+
+// Clase Caso1Model para el widget Caso1Widget.
+class Caso1Model extends FlutterFlowModel<Caso1Widget> {
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {}
+}
+
+// Modelo para un formulario más avanzado que incluye múltiples campos de texto con validación.
+// Se utiliza para controlar el estado de varios campos de un formulario como 'numero', 'edad', 'talla', 'peso' e 'IMC'.
+class FormularioBasededatos1Model extends FlutterFlowModel<FormularioBasededatos1Widget> {
+  /// Campos de estado para widgets que necesitan ser controlados.
+
+  // Definición del FocusNode para el campo "Numero", que gestiona cuándo el campo está enfocado o interactuando.
+  FocusNode? numeroFocusNode;
+  // Controlador de texto para el campo "Numero", que gestiona el texto introducido por el usuario.
+  TextEditingController? numeroTextController;
+  // Validador del campo "Numero" para validar la entrada del usuario según las reglas específicas.
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  // FocusNode para el campo "Edad", utilizado para manejar el foco de este campo.
+  FocusNode? edadFocusNode;
+  // Controlador de texto para el campo "Edad", que almacena y gestiona el texto del usuario.
+  TextEditingController? edadTextController;
+  // Validador del campo "Edad" que verifica si la entrada es válida.
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  // FocusNode para el campo "Talla", manejando el foco de este campo específico.
+  FocusNode? tallaFocusNode;
+  // Controlador de texto para el campo "Talla", que gestiona el texto introducido por el usuario.
+  TextEditingController? tallaTextController;
+  // Validador para el campo "Talla", que comprueba la validez de la entrada.
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  // FocusNode para el campo "Peso", controlando cuándo este campo recibe la interacción del usuario.
+  FocusNode? pesoFocusNode;
+  // Controlador de texto para el campo "Peso", gestionando el texto en tiempo real.
+  TextEditingController? pesoTextController;
+  // Validador del campo "Peso", para garantizar que los datos ingresados sean correctos.
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  // FocusNode y controlador de texto para los campos de "IMC" (Índice de Masa Corporal).
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  // Método initState se llama para inicializar el estado del widget cuando se crea.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método dispose se asegura de liberar los recursos como FocusNodes y TextControllers para evitar pérdidas de memoria.
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o2Model para manejar el estado de un formulario específico con varios campos.
+class Formulario1o2Model extends FlutterFlowModel<Formulario1o2Widget> {
+  // Campos de estado asociados a widgets de formulario en esta página, como campos de texto, validaciones y nodos de enfoque.
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  // Método initState se llama para inicializar el estado del formulario.
+  @override
+  void initState(BuildContext context) {}
+
+  // Método dispose se asegura de liberar recursos asociados a cada uno de los campos del formulario.
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o3Model para otro formulario similar, que sigue el mismo patrón de manejo de estado de widgets de entrada de datos.
+class Formulario1o3Model extends FlutterFlowModel<Formulario1o3Widget> {
+  // Campos de estado para manejar los nodos de enfoque, controladores de texto y validaciones de los campos del formulario.
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o4Model para otro formulario similar. Maneja múltiples campos de texto con FocusNode y TextEditingController.
+class Formulario1o4Model extends FlutterFlowModel<Formulario1o4Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o5Model, patrón de implementación similar al resto de formularios.
+class Formulario1o5Model extends FlutterFlowModel<Formulario1o5Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o6Model. Repite la misma estructura para gestionar formularios con varios campos de texto.
+class Formulario1o6Model extends FlutterFlowModel<Formulario1o6Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o7Model. Continúa el mismo patrón de manejo de estado.
+class Formulario1o7Model extends FlutterFlowModel<Formulario1o7Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o8Model. Similar a las anteriores, maneja varios campos de texto.
+class Formulario1o8Model extends FlutterFlowModel<Formulario1o8Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o9Model.
+class Formulario1o9Model extends FlutterFlowModel<Formulario1o9Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o10Model.
+class Formulario1o10Model extends FlutterFlowModel<Formulario1o10Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o11Model.
+class Formulario1o11Model extends FlutterFlowModel<Formulario1o11Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o12Model.
+class Formulario1o12Model extends FlutterFlowModel<Formulario1o12Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o13Model.
+class Formulario1o13Model extends FlutterFlowModel<Formulario1o13Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o14Model.
+class Formulario1o14Model extends FlutterFlowModel<Formulario1o14Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o15Model.
+class Formulario1o15Model extends FlutterFlowModel<Formulario1o15Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o16Model.
+class Formulario1o16Model extends FlutterFlowModel<Formulario1o16Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o17Model.
+class Formulario1o17Model extends FlutterFlowModel<Formulario1o17Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o18Model.
+class Formulario1o18Model extends FlutterFlowModel<Formulario1o18Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o19Model.
+class Formulario1o19Model extends FlutterFlowModel<Formulario1o19Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o20Model.
+class Formulario1o20Model extends FlutterFlowModel<Formulario1o20Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o21Model.
+class Formulario1o21Model extends FlutterFlowModel<Formulario1o21Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o22Model.
+class Formulario1o22Model extends FlutterFlowModel<Formulario1o22Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o23Model.
+class Formulario1o23Model extends FlutterFlowModel<Formulario1o23Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o24Model.
+class Formulario1o24Model extends FlutterFlowModel<Formulario1o24Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o25Model.
+class Formulario1o25Model extends FlutterFlowModel<Formulario1o25Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o26Model.
+class Formulario1o26Model extends FlutterFlowModel<Formulario1o26Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o27Model.
+class Formulario1o27Model extends FlutterFlowModel<Formulario1o27Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o28Model.
+class Formulario1o28Model extends FlutterFlowModel<Formulario1o28Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o29Model.
+class Formulario1o29Model extends FlutterFlowModel<Formulario1o29Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}
+
+// Clase Formulario1o30Model.
+class Formulario1o30Model extends FlutterFlowModel<Formulario1o30Widget> {
+  FocusNode? numeroFocusNode;
+  TextEditingController? numeroTextController;
+  String? Function(BuildContext, String?)? numeroTextControllerValidator;
+
+  FocusNode? edadFocusNode;
+  TextEditingController? edadTextController;
+  String? Function(BuildContext, String?)? edadTextControllerValidator;
+
+  FocusNode? tallaFocusNode;
+  TextEditingController? tallaTextController;
+  String? Function(BuildContext, String?)? tallaTextControllerValidator;
+
+  FocusNode? pesoFocusNode;
+  TextEditingController? pesoTextController;
+  String? Function(BuildContext, String?)? pesoTextControllerValidator;
+
+  FocusNode? imcFocusNode1;
+  TextEditingController? imcTextController1;
+  String? Function(BuildContext, String?)? imcTextController1Validator;
+
+  FocusNode? imcFocusNode2;
+  TextEditingController? imcTextController2;
+  String? Function(BuildContext, String?)? imcTextController2Validator;
+
+  FocusNode? imcFocusNode3;
+  TextEditingController? imcTextController3;
+  String? Function(BuildContext, String?)? imcTextController3Validator;
+
+  FocusNode? imcFocusNode4;
+  TextEditingController? imcTextController4;
+  String? Function(BuildContext, String?)? imcTextController4Validator;
+
+  @override
+  void initState(BuildContext context) {}
+
+  @override
+  void dispose() {
+    numeroFocusNode?.dispose();
+    numeroTextController?.dispose();
+
+    edadFocusNode?.dispose();
+    edadTextController?.dispose();
+
+    tallaFocusNode?.dispose();
+    tallaTextController?.dispose();
+
+    pesoFocusNode?.dispose();
+    pesoTextController?.dispose();
+
+    imcFocusNode1?.dispose();
+    imcTextController1?.dispose();
+
+    imcFocusNode2?.dispose();
+    imcTextController2?.dispose();
+
+    imcFocusNode3?.dispose();
+    imcTextController3?.dispose();
+
+    imcFocusNode4?.dispose();
+    imcTextController4?.dispose();
+  }
+}

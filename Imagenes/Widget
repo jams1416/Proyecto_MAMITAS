@@ -1,0 +1,782 @@
+import '/auth/firebase_auth/auth_util.dart'; // Importa las utilidades de autenticación de Firebase.
+import '/flutter_flow/flutter_flow_expanded_image_view.dart'; // Importa la vista expandida de imágenes personalizada de FlutterFlow.
+import '/flutter_flow/flutter_flow_theme.dart'; // Importa el tema personalizado de FlutterFlow.
+import '/flutter_flow/flutter_flow_util.dart'; // Importa utilidades generales de FlutterFlow.
+import '/flutter_flow/flutter_flow_widgets.dart'; // Importa widgets personalizados de FlutterFlow.
+import '/flutter_flow/upload_data.dart'; // Importa utilidades para la carga de datos como imágenes.
+import 'package:flutter/material.dart'; // Importa el paquete de Material Design de Flutter.
+import 'package:google_fonts/google_fonts.dart'; // Importa la biblioteca de fuentes de Google.
+import 'package:page_transition/page_transition.dart'; // Importa las transiciones de página personalizadas.
+import 'package:provider/provider.dart'; // Importa la biblioteca Provider para la gestión del estado.
+import 'package:simple_gradient_text/simple_gradient_text.dart'; // Importa un paquete para crear textos con gradiente.
+
+import 'imagenes_model.dart'; // Importa el modelo correspondiente a la sección de imágenes.
+export 'imagenes_model.dart'; // Exporta el modelo para su uso en otras partes de la aplicación.
+
+/// La clase `ImagenesWidget` es un widget con estado que muestra la interfaz de usuario para la sección de imágenes.
+class ImagenesWidget extends StatefulWidget {
+  const ImagenesWidget({super.key}); // Constructor de la clase.
+
+  @override
+  State<ImagenesWidget> createState() => _ImagenesWidgetState(); // Define el estado asociado a este widget.
+}
+
+/// La clase `_ImagenesWidgetState` define el estado del widget `ImagenesWidget`.
+class _ImagenesWidgetState extends State<ImagenesWidget> {
+  late ImagenesModel _model; // Define una instancia del modelo `ImagenesModel`.
+
+  final scaffoldKey = GlobalKey<ScaffoldState>(); // Clave global para el Scaffold, permitiendo controlarlo.
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => ImagenesModel()); // Inicializa el modelo utilizando el contexto y un generador de modelos.
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {})); 
+    // Añade una devolución de llamada que se ejecuta después de que el marco ha sido renderizado por primera vez.
+  }
+
+  @override
+  void dispose() {
+    _model.dispose(); // Llama al método dispose del modelo para liberar recursos.
+    super.dispose(); // Llama al método dispose de la superclase.
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Construye la interfaz de usuario.
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(), 
+      // Si se hace clic fuera de un campo de texto, se cierra el teclado o se quita el enfoque.
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.white, // Establece el color de fondo del Scaffold.
+        drawer: Container(
+          width: 300,
+          child: Drawer(
+            elevation: 10,
+            child: Container(
+              width: 100,
+              height: 100,
+              decoration: BoxDecoration(
+                color: Color(0xCF56ABEC), // Color de fondo del Drawer.
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 40, 20, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            if (scaffoldKey.currentState!.isDrawerOpen ||
+                                scaffoldKey.currentState!.isEndDrawerOpen) {
+                              Navigator.pop(context); 
+                              // Cierra el Drawer si está abierto.
+                            }
+                          },
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 120,
+                          height: 120,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle, // Forma circular para la imagen de perfil.
+                          ),
+                          child: Image.asset(
+                            'assets/images/perfil.jpg', // Imagen de perfil.
+                            fit: BoxFit.cover, // Ajuste de la imagen dentro del contenedor.
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AuthUserStreamWidget(
+                          builder: (context) => Text(
+                            currentUserDisplayName, // Muestra el nombre de usuario actual.
+                            style: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          currentUserEmail, // Muestra el correo electrónico del usuario actual.
+                          style: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .override(
+                                fontFamily: 'Readex Pro',
+                                letterSpacing: 0,
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // ListView que contiene las opciones del Drawer.
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      // Opción de inicio.
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('PaginaPrincipal'); // Navega a la página principal.
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.restart_alt,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'bkdy9rqp' /* Inicio */,
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A), // Color de fondo del Tile.
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Otras opciones del Drawer (Perfil, Formulario, etc.) se configuran de manera similar.
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Perfil'); // Navega a la página de perfil.
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                '2e1qjvc5' /* configura tu perfil */,
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A),
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Sección de formulario.
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Formulario'); // Navega a la página del formulario.
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.dynamic_form,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'a4dnmwto' /* Formulario-Paciente */,
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A),
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Sección de imágenes.
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Imagenes'); // Navega a la página de imágenes.
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.image_search,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'm839qlid' /* Imágenes Termográficas  */,
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A),
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Otras opciones como Resultados, Base de Datos y Salir.
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Resultados'); // Navega a la página de resultados.
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.bar_chart,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'je6c26c6' /* Resultados */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A),
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('BasedeDatos'); // Navega a la página de base de datos.
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.card_travel,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'gv456l1s' /* Base de Datos */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A),
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Login'); // Navega a la página de login.
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.exit_to_app,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'ra9koo9u' /* Salir  */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A),
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        appBar: AppBar(
+          backgroundColor: Color(0xCF56ABEC), // Color de fondo del AppBar.
+          iconTheme: IconThemeData(color: Colors.black), // Color de los iconos en el AppBar.
+          automaticallyImplyLeading: true, // Determina si se muestra el botón de navegación predeterminado.
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        '6ib3s1gq' /* Imágenes
+mamitas */,
+                      ),
+                      style: FlutterFlowTheme.of(context).headlineSmall.override(
+                            fontFamily: 'Outfit',
+                            letterSpacing: 0,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: [
+            // Cambia el modo oscuro/claro de la aplicación.
+            Container(
+              height: 100,
+              decoration: BoxDecoration(),
+              child: Stack(
+                children: [
+                  if (Theme.of(context).brightness == Brightness.light)
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setDarkModeSetting(
+                          context,
+                          !(Theme.of(context).brightness == Brightness.dark)
+                              ? ThemeMode.dark
+                              : ThemeMode.light,
+                        );
+                      },
+                      child: Icon(
+                        Icons.dark_mode_outlined,
+                        color: Colors.black,
+                        size: 40,
+                      ),
+                    ),
+                  if (Theme.of(context).brightness == Brightness.dark)
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setDarkModeSetting(context, ThemeMode.light);
+                      },
+                      child: Icon(
+                        Icons.light_mode_outlined,
+                        color: Colors.black,
+                        size: 40,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
+          centerTitle: true, // Centra el título en el AppBar.
+          elevation: 4, // Elevación del AppBar.
+        ),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              // Contenedor que muestra la imagen de fondo y permite al usuario seleccionar y cargar imágenes.
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.contain,
+                    alignment: AlignmentDirectional(0, 0),
+                    image: Image.asset(
+                      'assets/images/Captura.JPG',
+                    ).image,
+                  ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    // Texto que indica al usuario que inserte una imagen.
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(60, 0, 0, 0),
+                            child: GradientText(
+                              FFLocalizations.of(context).getText(
+                                'x1kknywc' /* Inserte Imagen */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .headlineMedium
+                                  .override(
+                                    fontFamily: 'Outfit',
+                                    fontSize: 40,
+                                    letterSpacing: 0,
+                                  ),
+                              colors: [Colors.black, Colors.black],
+                              gradientDirection: GradientDirection.ltr,
+                              gradientType: GradientType.linear,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_downward_outlined,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30,
+                    ),
+                    // Permite al usuario seleccionar una imagen y la muestra en pantalla.
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          imageQuality: 100,
+                          allowPhoto: true,
+                        );
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
+                          setState(() => _model.isDataUploading1 = true);
+                          var selectedUploadedFiles = <FFUploadedFile>[];
+
+                          try {
+                            selectedUploadedFiles = selectedMedia
+                                .map((m) => FFUploadedFile(
+                                      name: m.storagePath.split('/').last,
+                                      bytes: m.bytes,
+                                      height: m.dimensions?.height,
+                                      width: m.dimensions?.width,
+                                      blurHash: m.blurHash,
+                                    ))
+                                .toList();
+                          } finally {
+                            _model.isDataUploading1 = false;
+                          }
+                          if (selectedUploadedFiles.length ==
+                              selectedMedia.length) {
+                            setState(() {
+                              _model.uploadedLocalFile1 =
+                                  selectedUploadedFiles.first;
+                            });
+                          } else {
+                            setState(() {});
+                            return;
+                          }
+                        }
+
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            child: FlutterFlowExpandedImageView(
+                              image: Image.memory(
+                                _model.uploadedLocalFile1.bytes ??
+                                    Uint8List.fromList([]),
+                                fit: BoxFit.contain,
+                              ),
+                              allowRotation: false,
+                              tag: 'imageTag1',
+                              useHeroAnimation: true,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Hero(
+                        tag: 'imageTag1',
+                        transitionOnUserGestures: true,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.memory(
+                            _model.uploadedLocalFile1.bytes ??
+                                Uint8List.fromList([]),
+                            width: 300,
+                            height: 200,
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                      child: GradientText(
+                        FFLocalizations.of(context).getText(
+                          'ni0peaed' /* Inserte Imagen */,
+                        ),
+                        textAlign: TextAlign.start,
+                        style:
+                            FlutterFlowTheme.of(context).displayMedium.override(
+                                  fontFamily: 'Outfit',
+                                  letterSpacing: 0,
+                                ),
+                        colors: [Colors.black, Colors.black],
+                        gradientDirection: GradientDirection.ltr,
+                        gradientType: GradientType.linear,
+                      ),
+                    ),
+                    Icon(
+                      Icons.arrow_downward_outlined,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 30,
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          final selectedMedia =
+                              await selectMediaWithSourceBottomSheet(
+                            context: context,
+                            imageQuality: 100,
+                            allowPhoto: true,
+                          );
+                          if (selectedMedia != null &&
+                              selectedMedia.every((m) =>
+                                  validateFileFormat(m.storagePath, context))) {
+                            setState(() => _model.isDataUploading2 = true);
+                            var selectedUploadedFiles = <FFUploadedFile>[];
+
+                            try {
+                              selectedUploadedFiles = selectedMedia
+                                  .map((m) => FFUploadedFile(
+                                        name: m.storagePath.split('/').last,
+                                        bytes: m.bytes,
+                                        height: m.dimensions?.height,
+                                        width: m.dimensions?.width,
+                                        blurHash: m.blurHash,
+                                      ))
+                                  .toList();
+                            } finally {
+                              _model.isDataUploading2 = false;
+                            }
+                            if (selectedUploadedFiles.length ==
+                                selectedMedia.length) {
+                              setState(() {
+                                _model.uploadedLocalFile2 =
+                                    selectedUploadedFiles.first;
+                              });
+                            } else {
+                              setState(() {});
+                              return;
+                            }
+                          }
+
+                          await Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.fade,
+                              child: FlutterFlowExpandedImageView(
+                                image: Image.memory(
+                                  _model.uploadedLocalFile2.bytes ??
+                                      Uint8List.fromList([]),
+                                  fit: BoxFit.contain,
+                                ),
+                                allowRotation: false,
+                                tag: 'imageTag2',
+                                useHeroAnimation: true,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Hero(
+                          tag: 'imageTag2',
+                          transitionOnUserGestures: true,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.memory(
+                              _model.uploadedLocalFile2.bytes ??
+                                  Uint8List.fromList([]),
+                              width: 300,
+                              height: 200,
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                content: Text('imagenes cargadas'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          setState(() {
+                            _model.isDataUploading2 = false;
+                            _model.uploadedLocalFile2 =
+                                FFUploadedFile(bytes: Uint8List.fromList([]));
+                          });
+
+                          setState(() {
+                            _model.isDataUploading1 = false;
+                            _model.uploadedLocalFile1 =
+                                FFUploadedFile(bytes: Uint8List.fromList([]));
+                          });
+
+                          context.pushNamed('PaginaPrincipal');
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'dpe5plq7' /* Guardar */,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40,
+                          padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                          iconPadding:
+                              EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                          color: Color(0xCF56ABEC),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: 'Outfit',
+                                letterSpacing: 0,
+                              ),
+                          elevation: 3,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

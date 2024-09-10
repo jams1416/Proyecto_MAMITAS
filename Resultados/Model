@@ -1,0 +1,30 @@
+// Importaciones necesarias para el modelo, incluyendo utilidades de autenticación, 
+// temas de FlutterFlow, widgets personalizados y otros paquetes esenciales.
+import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'resultados_widget.dart' show ResultadosWidget; // Importa el widget asociado, pero solo lo muestra para el contexto de este modelo.
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+// Definición del modelo 'ResultadosModel' que extiende 'FlutterFlowModel',
+// y se asocia específicamente con el 'ResultadosWidget'.
+class ResultadosModel extends FlutterFlowModel<ResultadosWidget> {
+  // Campos de estado para widgets con estado en esta página.
+
+  final unfocusNode = FocusNode(); // Nodo de enfoque para manejar la pérdida de enfoque en widgets.
+
+  @override
+  void initState(BuildContext context) {
+    // Método que se ejecuta al inicializar el modelo.
+    // Aquí se pueden configurar valores iniciales o suscribirse a eventos.
+  }
+
+  @override
+  void dispose() {
+    // Método que se ejecuta al desechar el modelo.
+    // Aquí se deben limpiar recursos como listeners, streams o controllers.
+  }
+}

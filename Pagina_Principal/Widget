@@ -1,0 +1,814 @@
+// Importaciones necesarias para el funcionamiento del widget
+import '/auth/firebase_auth/auth_util.dart'; // Utilidades de autenticación con Firebase
+import '/flutter_flow/flutter_flow_theme.dart'; // Temas personalizados de FlutterFlow
+import '/flutter_flow/flutter_flow_util.dart'; // Utilidades generales de FlutterFlow
+import '/flutter_flow/flutter_flow_widgets.dart'; // Widgets personalizados de FlutterFlow
+import 'package:flutter/material.dart'; // Material Design para Flutter
+import 'package:google_fonts/google_fonts.dart'; // Google Fonts para tipografías personalizadas
+import 'package:provider/provider.dart'; // Gestión de estado con Provider
+
+// Importación y exportación del modelo de datos para este widget
+import 'pagina_principal_model.dart';
+export 'pagina_principal_model.dart';
+
+// Declaración del widget PaginaPrincipalWidget como un StatefulWidget
+class PaginaPrincipalWidget extends StatefulWidget {
+  const PaginaPrincipalWidget({super.key});
+
+  @override
+  State<PaginaPrincipalWidget> createState() => _PaginaPrincipalWidgetState();
+}
+
+// Estado asociado al PaginaPrincipalWidget
+class _PaginaPrincipalWidgetState extends State<PaginaPrincipalWidget> {
+  // Modelo de datos para este widget
+  late PaginaPrincipalModel _model;
+
+  // Clave global para el Scaffold, utilizada para controlar el estado del Scaffold
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // Inicialización del modelo utilizando una función de creación de modelos
+    _model = createModel(context, () => PaginaPrincipalModel());
+
+    // Ejecuta una función después de que el frame actual se haya renderizado
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    // Dispose de los controladores y focus nodes para liberar recursos
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(), // Cierra el teclado al hacer tap fuera de un campo
+      child: Scaffold(
+        key: scaffoldKey, // Asigna la clave global al Scaffold
+        backgroundColor: Colors.white, // Color de fondo del Scaffold
+        // Definición del Drawer (menú lateral)
+        drawer: Container(
+          width: 300, // Ancho del Drawer
+          child: Drawer(
+            elevation: 10, // Elevación para la sombra del Drawer
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xCF56ABEC), // Color de fondo del Drawer
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  // Botón para cerrar el Drawer
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 40, 20, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            if (scaffoldKey.currentState!.isDrawerOpen ||
+                                scaffoldKey.currentState!.isEndDrawerOpen) {
+                              Navigator.pop(context); // Cierra el Drawer
+                            }
+                          },
+                          child: Icon(
+                            Icons.arrow_back, // Icono de flecha hacia atrás
+                            color: Colors.white, // Color del icono
+                            size: 24, // Tamaño del icono
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Imagen de perfil del usuario en el Drawer
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 120, // Ancho de la imagen de perfil
+                          height: 120, // Alto de la imagen de perfil
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle, // Forma circular para la imagen
+                          ),
+                          child: Image.asset(
+                            'assets/images/perfil.jpg', // Ruta de la imagen de perfil
+                            fit: BoxFit.cover, // Ajuste de la imagen
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Nombre del usuario en el Drawer
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AuthUserStreamWidget(
+                          builder: (context) => Text(
+                            currentUserDisplayName, // Muestra el nombre del usuario
+                            style: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  letterSpacing: 0,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Email del usuario en el Drawer
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          currentUserEmail, // Muestra el email del usuario
+                          style:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Lista de opciones del Drawer
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      // Opción de "Inicio"
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('PaginaPrincipal'); // Navega a la página principal
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.restart_alt, // Icono de reinicio
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'hxxx458d' /* Inicio */, // Texto de "Inicio" con localización
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A), // Color de fondo de la opción
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16), // Bordes redondeados para el tile
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Opción de "Configura tu Perfil"
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Perfil'); // Navega a la página de perfil
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.person, // Icono de persona
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'bw1071gz' /* Configura tu Perfil */, // Texto de "Configura tu Perfil" con localización
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A), // Color de fondo de la opción
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16), // Bordes redondeados para el tile
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Opción de "Formulario-Paciente"
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Formulario'); // Navega a la página de formulario
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.dynamic_form, // Icono de formulario
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                '4ismxlu6' /* Formulario-Paciente */, // Texto de "Formulario-Paciente" con localización
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A), // Color de fondo de la opción
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16), // Bordes redondeados para el tile
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Opción de "Imágenes Termográficas"
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Imagenes'); // Navega a la página de imágenes
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.image_search, // Icono de búsqueda de imágenes
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'z1kocm1j' /* Imágenes Termográficas */, // Texto de "Imágenes Termográficas" con localización
+                              ),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A), // Color de fondo de la opción
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16), // Bordes redondeados para el tile
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Opción de "Resultados"
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Resultados'); // Navega a la página de resultados
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.bar_chart, // Icono de gráfico
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                'y6gsgp0s' /* Resultados */, // Texto de "Resultados" con localización
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A), // Color de fondo de la opción
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16), // Bordes redondeados para el tile
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Opción de "Base de Datos"
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('BasedeDatos'); // Navega a la página de base de datos
+                          },
+                          child: ListTile(
+                            leading: Icon(
+                              Icons.card_travel, // Icono de base de datos
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              FFLocalizations.of(context).getText(
+                                '2p6oow4f' /* Base de Datos */, // Texto de "Base de Datos" con localización
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                            ),
+                            tileColor: Color(0xFF5A5A5A), // Color de fondo de la opción
+                            dense: false,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16), // Bordes redondeados para el tile
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Opción de "Salir" en el Drawer
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('Login'); // Navega a la pantalla de login
+                      },
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.exit_to_app, // Icono de salir
+                          color: Colors.white,
+                        ),
+                        title: Text(
+                          FFLocalizations.of(context).getText(
+                            'ob9brf9b' /* Salir  */, // Texto de "Salir" con localización
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).titleMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0,
+                                  ),
+                        ),
+                        tileColor: Color(0xFF5A5A5A), // Color de fondo de la opción
+                        dense: false,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16), // Bordes redondeados para el tile
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        // Definición de la AppBar (barra superior)
+        appBar: AppBar(
+          backgroundColor: Color(0xCF56ABEC), // Color de fondo de la AppBar
+          iconTheme: IconThemeData(color: Colors.black), // Tema de iconos en la AppBar
+          automaticallyImplyLeading: true, // Agrega el botón de regreso automático
+          title: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start, // Alineación a la izquierda
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0), // Padding derecho
+                    child: Text(
+                      FFLocalizations.of(context).getText(
+                        'du21myim' /* MAMITAS */, // Título de la AppBar
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: 'Outfit',
+                                letterSpacing: 0,
+                              ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: [
+            // Botón para cambiar entre modo claro y oscuro
+            Container(
+              height: 100, // Altura del contenedor de la acción
+              decoration: BoxDecoration(),
+              child: Stack(
+                children: [
+                  if (Theme.of(context).brightness == Brightness.light)
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setDarkModeSetting(
+                          context,
+                          !(Theme.of(context).brightness == Brightness.dark)
+                              ? ThemeMode.dark // Cambia a modo oscuro
+                              : ThemeMode.light,
+                        );
+                      },
+                      child: Icon(
+                        Icons.dark_mode_outlined, // Icono de modo oscuro
+                        color: Colors.black,
+                        size: 40, // Tamaño del icono
+                      ),
+                    ),
+                  if (Theme.of(context).brightness == Brightness.dark)
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setDarkModeSetting(context, ThemeMode.light); // Cambia a modo claro
+                      },
+                      child: Icon(
+                        Icons.light_mode_outlined, // Icono de modo claro
+                        color: Colors.black,
+                        size: 40, // Tamaño del icono
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
+          centerTitle: true, // Título centrado en la AppBar
+          elevation: 4, // Elevación de la AppBar
+        ),
+        // Cuerpo principal del Scaffold
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              // Primer bloque con una imagen de fondo y botones
+              Opacity(
+                opacity: 0.6, // Opacidad del contenedor
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: Image.asset(
+                        'assets/images/Captura.JPG', // Imagen de fondo
+                      ).image,
+                    ),
+                  ),
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed('Perfil'); // Navega a la página de perfil
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(30, 120, 0, 0), // Padding superior
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0, -1.53),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          40, 10, 0, 0), // Padding izquierdo
+                                      child: Icon(
+                                        Icons.person, // Icono de persona
+                                        color: Colors.black, // Color del icono
+                                        size: 40, // Tamaño del icono
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // Botón para ir al perfil
+                              Align(
+                                alignment: AlignmentDirectional(-0.97, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 50, 0, 0), // Padding superior
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      context.pushNamed('Perfil'); // Navega a la página de perfil
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'txisl84c' /* Perfil */, // Texto del botón con localización
+                                    ),
+                                    options: FFButtonOptions(
+                                      height: 40, // Altura del botón
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24, 0, 24, 0), // Padding interno
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
+                                      color: Color(0xCF56ABEC), // Color de fondo del botón
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Outfit', // Fuente del texto
+                                            letterSpacing: 0,
+                                          ),
+                                      elevation: 3, // Elevación del botón
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent, // Sin borde
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8), // Bordes redondeados del botón
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.28, -2.21),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      35, 10, 0, 0), // Padding superior
+                                  child: Icon(
+                                    Icons.forum, // Icono de foro
+                                    color: Colors.black, // Color del icono
+                                    size: 40, // Tamaño del icono
+                                  ),
+                                ),
+                              ),
+                              // Botón para ir al formulario
+                              Align(
+                                alignment: AlignmentDirectional(0.66, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10, 50, 0, 0), // Padding superior
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      context.pushNamed('Formulario'); // Navega a la página de formulario
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      '1tfgnam3' /* Formulario */, // Texto del botón con localización
+                                    ),
+                                    options: FFButtonOptions(
+                                      height: 40, // Altura del botón
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24, 0, 24, 0), // Padding interno
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
+                                      color: Color(0xCF56ABEC), // Color de fondo del botón
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Outfit', // Fuente del texto
+                                            letterSpacing: 0,
+                                          ),
+                                      elevation: 3, // Elevación del botón
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent, // Sin borde
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8), // Bordes redondeados del botón
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(30, 120, 0, 0), // Padding superior
+                          child: Stack(
+                            children: [
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        30, 5, 0, 0), // Padding izquierdo
+                                    child: Icon(
+                                      Icons.image_search, // Icono de búsqueda de imágenes
+                                      color: Colors.black, // Color del icono
+                                      size: 40, // Tamaño del icono
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              // Botón para ir a las imágenes
+                              Align(
+                                alignment: AlignmentDirectional(-1.21, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 50, 20, 0), // Padding superior
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      context.pushNamed('Imagenes'); // Navega a la página de imágenes
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'r5cr46lg' /* Imágenes */, // Texto del botón con localización
+                                    ),
+                                    options: FFButtonOptions(
+                                      height: 40, // Altura del botón
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24, 0, 24, 0), // Padding interno
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
+                                      color: Color(0xCF56ABEC), // Color de fondo del botón
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Outfit', // Fuente del texto
+                                            letterSpacing: 0,
+                                          ),
+                                      elevation: 3, // Elevación del botón
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent, // Sin borde
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8), // Bordes redondeados del botón
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.66, 0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      30, 50, 0, 0), // Padding superior
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      context.pushNamed('Resultados'); // Navega a la página de resultados
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      '59znrp95' /* Resultados */, // Texto del botón con localización
+                                    ),
+                                    options: FFButtonOptions(
+                                      height: 40, // Altura del botón
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24, 0, 24, 0), // Padding interno
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
+                                      color: Color(0xCF56ABEC), // Color de fondo del botón
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily: 'Outfit', // Fuente del texto
+                                            letterSpacing: 0,
+                                          ),
+                                      elevation: 3, // Elevación del botón
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent, // Sin borde
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8), // Bordes redondeados del botón
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.54, -0.85),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 5, 30, 0), // Padding superior
+                                  child: Icon(
+                                    Icons.graphic_eq, // Icono de gráfico
+                                    color: Colors.black, // Color del icono
+                                    size: 40, // Tamaño del icono
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              // Segundo bloque con botón para la base de datos
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(30, 80, 0, 0), // Padding superior
+                child: Stack(
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Opacity(
+                          opacity: 0.5, // Opacidad del icono
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(130, 5, 0, 0), // Padding izquierdo
+                            child: Icon(
+                              Icons.card_travel, // Icono de base de datos
+                              color: Colors.black, // Color del icono
+                              size: 40, // Tamaño del icono
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Opacity(
+                      opacity: 0.6, // Opacidad del botón
+                      child: Align(
+                        alignment: AlignmentDirectional(-1.21, 0),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(60, 50, 20, 0), // Padding superior
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              context.pushNamed('BasedeDatos'); // Navega a la página de base de datos
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              't8smjvha' /* Base de Datos */, // Texto del botón con localización
+                            ),
+                            options: FFButtonOptions(
+                              height: 40, // Altura del botón
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0), // Padding interno
+                              iconPadding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                              color: Color(0xCF56ABEC), // Color de fondo del botón
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .headlineSmall
+                                  .override(
+                                    fontFamily: 'Outfit', // Fuente del texto
+                                    letterSpacing: 0,
+                                  ),
+                              elevation: 3, // Elevación del botón
+                              borderSide: BorderSide(
+                                color: Colors.transparent, // Sin borde
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(8), // Bordes redondeados del botón
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

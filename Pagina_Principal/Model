@@ -1,0 +1,94 @@
+// Importaciones necesarias para la implementación del modelo
+import '/auth/firebase_auth/auth_util.dart'; // Utilidades de autenticación con Firebase
+import '/backend/backend.dart'; // Backend para manejar interacciones con la base de datos
+import '/flutter_flow/flutter_flow_util.dart'; // Utilidades generales de FlutterFlow
+import 'package:flutter/material.dart'; // Paquete base de Flutter para construir la UI
+import 'package:cloud_firestore/cloud_firestore.dart'; // Firestore para base de datos en tiempo real
+
+// Clase PaginaPrincipalModel que extiende FlutterFlowModel, la cual es responsable de manejar
+// el estado y la lógica de la página principal de la aplicación.
+class PaginaPrincipalModel extends FlutterFlowModel {
+  // Aquí se pueden declarar variables de estado que serán usadas en la página principal.
+  // Por ejemplo, puedes declarar variables para almacenar datos específicos o controlar la visibilidad de ciertos widgets.
+
+  // Esta variable puede ser usada para manejar el estado de autenticación del usuario.
+  // Por ejemplo, para verificar si el usuario está autenticado y si la sesión sigue activa.
+  bool? isLoggedIn;
+
+  // Si se tiene algún formulario en la página principal, aquí se podrían declarar controladores para
+  // los campos de texto. Estos controladores permiten manipular el texto de los campos y realizar
+  // validaciones en los mismos.
+
+  // TextEditingController para manejar el campo de texto del nombre de usuario en un formulario
+  TextEditingController? usernameController;
+
+  // FocusNode asociado al campo de texto de nombre de usuario para manejar el foco
+  FocusNode? usernameFocusNode;
+
+  // TextEditingController para manejar el campo de texto de email en un formulario
+  TextEditingController? emailController;
+
+  // FocusNode asociado al campo de texto de email para manejar el foco
+  FocusNode? emailFocusNode;
+
+  // Método para inicializar el estado y los controladores al crear el modelo.
+  void initState(BuildContext context) {
+    // Si se necesita inicializar algún valor al inicio, este es el lugar para hacerlo.
+    // Aquí se pueden inicializar controladores, configurar listeners, etc.
+    
+    // Inicializa el controlador del nombre de usuario si es necesario
+    usernameController = TextEditingController();
+    usernameFocusNode = FocusNode();
+
+    // Inicializa el controlador del email si es necesario
+    emailController = TextEditingController();
+    emailFocusNode = FocusNode();
+  }
+
+  // Método para liberar recursos cuando el modelo se elimina.
+  void dispose() {
+    // Aquí es importante liberar cualquier recurso utilizado, como controladores de texto o focus nodes,
+    // para evitar fugas de memoria en la aplicación.
+    
+    // Libera el controlador y el focus node del nombre de usuario si están en uso
+    usernameController?.dispose();
+    usernameFocusNode?.dispose();
+
+    // Libera el controlador y el focus node del email si están en uso
+    emailController?.dispose();
+    emailFocusNode?.dispose();
+  }
+
+  // Método opcional que se puede utilizar para realizar operaciones cuando el modelo se actualiza
+  // dentro del ciclo de vida de la aplicación.
+  void updateModel(BuildContext context) {
+    // Puedes utilizar este método para actualizar el estado del modelo
+    // basado en cambios en el contexto, como la autenticación del usuario
+    // o cambios en los datos de la base de datos.
+  }
+
+  // Método para realizar alguna acción basada en la autenticación del usuario
+  Future<void> checkAuthentication() async {
+    // Verifica si el usuario está autenticado
+    if (FirebaseAuth.instance.currentUser != null) {
+      isLoggedIn = true;
+    } else {
+      isLoggedIn = false;
+    }
+  }
+
+  // Método que puede ser utilizado para manejar la lógica de guardar datos del formulario
+  Future<void> saveUserData() async {
+    // Aquí se podría incluir la lógica para guardar los datos del formulario en la base de datos
+    // por ejemplo, utilizando Firestore:
+    
+    final userData = {
+      'username': usernameController?.text,
+      'email': emailController?.text,
+    };
+
+    // Guardar datos en Firestore (esto es solo un ejemplo)
+    await FirebaseFirestore.instance.collection('users').add(userData);
+  }
+
+}
