@@ -425,7 +425,7 @@ class _ImagenesWidgetState extends State<ImagenesWidget> {
                     child: Text(
                       FFLocalizations.of(context).getText(
                         '6ib3s1gq' /* Imágenes
-mamitas */,
+ThermoMaterAI */,
                       ),
                       style: FlutterFlowTheme.of(context).headlineSmall.override(
                             fontFamily: 'Outfit',

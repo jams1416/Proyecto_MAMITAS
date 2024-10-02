@@ -464,7 +464,7 @@ class _FormularioWidgetState extends State<FormularioWidget> {
                     child: Text(
                       FFLocalizations.of(context).getText(
                         '19a2kx5k' /* Formulario
-mamitas */
+ThermoMaterAI */
                         ,
                       ),
                       style:

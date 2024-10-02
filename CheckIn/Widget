@@ -107,7 +107,7 @@ class _CheckInWidgetState extends State<CheckInWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(32, 0, 0, 0), // Espaciado interno.
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'hot225op' /* MAMITAS */,
+                                          'hot225op' /* ThermalMaterAI */,
                                         ),
                                         textAlign: TextAlign.center, // Alineación del texto.
                                         style: FlutterFlowTheme.of(context)

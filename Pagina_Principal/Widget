@@ -428,7 +428,7 @@ class _PaginaPrincipalWidgetState extends State<PaginaPrincipalWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0), // Padding derecho
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'du21myim' /* MAMITAS */, // Título de la AppBar
+                        'du21myim' /* ThermoMaterAI */, // Título de la AppBar
                       ),
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(

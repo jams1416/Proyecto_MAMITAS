@@ -106,7 +106,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(32, 0, 0, 0), // Espaciado interno.
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'fczbn645' /* MAMITAS */,
+                                          'fczbn645' /* ThermoMaterAI */,
                                         ),
                                         textAlign: TextAlign.center, // Alineación del texto.
                                         style: FlutterFlowTheme.of(context)

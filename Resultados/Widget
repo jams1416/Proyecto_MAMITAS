@@ -403,7 +403,7 @@ class _ResultadosWidgetState extends State<ResultadosWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                     child: Text(
                       FFLocalizations.of(context).getText(
-                        'qq8clnn8' /* Resultados mamitas */,
+                        'qq8clnn8' /* Resultados ThermoMaterAI */,
                       ),
                       style:
                           FlutterFlowTheme.of(context).headlineSmall.override(
